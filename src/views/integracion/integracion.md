@@ -66,10 +66,19 @@ _Notas de 0 a 5 basadas en la lectura de `register.js` del equipo 3 (commit `7ed
 
 ## 6. Uso de IA
 
-- **Herramienta:** Claude Code
-- **Quién la usó:** _(integrante)_
-- **Para qué:** estructura inicial de `integracion.js`, `integracion.html` y borrador de esta documentación.
-- **Qué cambiamos nosotros:** _(completar)_
+- **Herramienta:** Claude Code (asistente de IA en el editor).
+- **Quién la usó:** Cristian Mañay, desde su equipo. Los commits de Jeremy y de Amaro también se prepararon desde ese mismo equipo con la ayuda de la herramienta, usando la identidad de cada uno.
+- **Para qué:**
+  - Escribir el padre `<wc-integracion>` y `integracion.html`.
+  - Leer el `register.js` del equipo 3, copiarlo sin cambios y verificar que fuera idéntico.
+  - Escribir el adaptador del `detail` y su validación.
+  - Agregar estilos y la temática de servicios tecnológicos a nuestro formulario y nuestra tabla.
+  - Redactar el borrador de esta documentación, de la evaluación del componente externo y del issue.
+- **Qué cambiamos nosotros:**
+  - Elegimos al equipo 3 y su formulario, y decidimos usar nuestra propia tabla.
+  - Probamos la página en el navegador, con la consola abierta, y tomamos la captura.
+  - Decidimos la temática (servicios tecnológicos), quitar los datos de ejemplo y dejar el mapeo de campos como quedó.
+  - Revisamos las notas de la evaluación y el texto del issue antes de publicarlos, y decidimos qué commits y qué push hacer en cada momento.
 
 ## 7. Aportes del equipo
 
