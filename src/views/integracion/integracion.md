@@ -22,13 +22,14 @@
 ```mermaid
 flowchart TD
     F["wc-register (Equipo 3)"] -- "evento cafeRegister · detail {nombre, origen, precio, cantidad, total}" --> P["wc-integracion (padre + adaptador)"]
-    P -- "propiedad .studentList = lista (arreglo nuevo)" --> T["wc-table (nuestro equipo)"]
+    P -- "propiedad .list = lista (arreglo nuevo) · {servicio, categoria, precio}" --> T["wc-table (nuestro equipo)"]
 ```
 
 **Adaptador.** El método `agregar(event)` del padre toma `event.detail` del
-formulario del equipo 3 (`{ nombre, origen, precio, cantidad, total }`) y lo
-convierte al formato que espera nuestra tabla (`{ name, lastName, age }`):
-`nombre` pasa a `name`, `origen` a `lastName` y `cantidad` (como número) a `age`.
+formulario del equipo 3 (`{ nombre, origen, precio, cantidad, total }`, cuatro
+campos de entrada) y lo convierte al formato de nuestra tabla de servicios
+tecnológicos (`{ servicio, categoria, precio }`, tres campos): `nombre` pasa a
+`servicio`, `origen` a `categoria` y `total` (precio × cantidad) a `precio`.
 Si falta algún dato, el evento se ignora con un aviso en consola. Luego hace
 `this.lista = [...this.lista, fila]`; al ser un arreglo nuevo, Lit re-renderiza
 y la tabla muestra la fila. El componente externo no se modifica.

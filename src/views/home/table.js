@@ -1,6 +1,12 @@
 import { LitElement, html, css } from 'lit-element';
 
 class Table extends LitElement {
+    static get properties() {
+        return {
+            list: { type: Array },
+        };
+    }
+
     static get styles() {
         return css`
             :host {
@@ -40,25 +46,25 @@ class Table extends LitElement {
 
     constructor() {
         super();
-        this.studentList = [];
+        this.list = [];
     }
     render() {
         return html`
-            <h1>Listado de estudiantes</h1>
+            <h1>Catálogo de servicios</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Edad</th>
+                        <th>Servicio</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
                     </tr>
                 </thead>
                 <tbody>
-                    ${(this.studentList || []).map((student) => {
+                    ${(this.list || []).map((item) => {
                         return html` <tr>
-                            <td>${student.name}</td>
-                            <td>${student.lastName}</td>
-                            <td>${student.age}</td>
+                            <td>${item.servicio}</td>
+                            <td>${item.categoria}</td>
+                            <td>$${Number(item.precio).toFixed(2)}</td>
                         </tr>`;
                     })}
                 </tbody>

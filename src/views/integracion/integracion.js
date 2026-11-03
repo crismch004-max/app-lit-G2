@@ -15,19 +15,20 @@ class Integracion extends LitElement {
   }
 
   // Adaptador: convierte el detail del otro equipo al formato de nuestra tabla.
-  // Equipo 3 emite { nombre, origen, precio, cantidad, total }; nuestra tabla
-  // espera { name, lastName, age }.
+  // Equipo 3 emite { nombre, origen, precio, cantidad, total } (4 campos de entrada);
+  // nuestra tabla de servicios espera { servicio, categoria, precio } (3 campos):
+  //   nombre -> servicio, origen -> categoria, total (precio x cantidad) -> precio
   agregar(event) {
     const detail = event.detail || {};
-    const name = String(detail.nombre ?? "").trim();
-    const lastName = String(detail.origen ?? "").trim();
-    const age = Number(detail.cantidad);
+    const servicio = String(detail.nombre ?? "").trim();
+    const categoria = String(detail.origen ?? "").trim();
+    const precio = Number(detail.total);
     // Datos inesperados: no se agrega una fila rota a la tabla
-    if (!name || !lastName || detail.cantidad === "" || Number.isNaN(age)) {
+    if (!servicio || !categoria || detail.total === "" || Number.isNaN(precio)) {
       console.warn("[wc-integracion] detail incompleto, se ignora:", detail);
       return;
     }
-    const fila = { name, lastName, age };
+    const fila = { servicio, categoria, precio };
     // Arreglo nuevo: así Lit detecta el cambio y vuelve a renderizar
     this.lista = [...this.lista, fila];
   }
@@ -35,7 +36,7 @@ class Integracion extends LitElement {
   render() {
     return html`
       <wc-register @cafeRegister="${this.agregar}"></wc-register>
-      <wc-table .studentList="${this.lista}"></wc-table>
+      <wc-table .list="${this.lista}"></wc-table>
     `;
   }
 }
