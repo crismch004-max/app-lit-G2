@@ -4,32 +4,34 @@
 
 - **Equipo:** Equipo N° _(completar)_ — integrantes: Cristian Mañay, Jeremy Vilañana, Amaro Caiza
 - **Repositorio del equipo:** https://github.com/crismch004-max/app-lit-G2 (rama `taller-integracion`)
-- **Equipo externo:** Equipo 3 _(confirmar)_
-- **Repositorio externo:** _(enlace)_
-- **Archivo externo:** `src/externos/equipo-3/register.js` (`<wc-form-register>`)
-- **Commit usado:** `_______` _(7 primeros caracteres)_
+- **Equipo externo:** Equipo 3
+- **Repositorio externo:** https://github.com/Shairr/Componentes-Lit-G3
+- **Archivo externo:** `src/views/home/register.js` del equipo 3, copiado sin cambios a `src/externos/equipo-3/register.js` (`<wc-register>`)
+- **Commit usado:** `7ed9e9e`
 
 ## 2. Componentes y roles
 
 | Componente | Origen | Rol |
 | --- | --- | --- |
 | `<wc-integracion>` | Nuestro equipo | Padre |
-| `<wc-form-register>` | Equipo 3 | Hijo que emite |
+| `<wc-register>` | Equipo 3 | Hijo que emite |
 | `<wc-table>` | Nuestro equipo | Hijo que recibe |
 
 ## 3. Flujo de comunicación
 
 ```mermaid
 flowchart TD
-    F["wc-form-register (Equipo 3)"] -- "evento personRegister · detail {name, lastName, age}" --> P["wc-integracion (padre + adaptador)"]
+    F["wc-register (Equipo 3)"] -- "evento cafeRegister · detail {nombre, origen, precio, cantidad, total}" --> P["wc-integracion (padre + adaptador)"]
     P -- "propiedad .studentList = lista (arreglo nuevo)" --> T["wc-table (nuestro equipo)"]
 ```
 
 **Adaptador.** El método `agregar(event)` del padre toma `event.detail` del
-formulario externo y construye `{ name, lastName, age: Number(age) }`, el
-formato que espera nuestra tabla. Luego hace `this.lista = [...this.lista, fila]`;
-al ser un arreglo nuevo, Lit re-renderiza y la tabla muestra la fila. El
-componente externo no se modifica.
+formulario del equipo 3 (`{ nombre, origen, precio, cantidad, total }`) y lo
+convierte al formato que espera nuestra tabla (`{ name, lastName, age }`):
+`nombre` pasa a `name`, `origen` a `lastName` y `cantidad` (como número) a `age`.
+Si falta algún dato, el evento se ignora con un aviso en consola. Luego hace
+`this.lista = [...this.lista, fila]`; al ser un arreglo nuevo, Lit re-renderiza
+y la tabla muestra la fila. El componente externo no se modifica.
 
 ## 4. Dificultades
 
