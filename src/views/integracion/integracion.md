@@ -2,7 +2,7 @@
 
 ## 1. Datos
 
-- **Equipo:** Equipo N° 2 — integrantes: Cristian Mañay, Jeremy Vilañana, Amaro Caiza
+- **Equipo:** Equipo N° 2 — integrantes: Cristian Mañay, Jeremy Vilaña, Amaro Caiza
 - **Repositorio del equipo:** https://github.com/crismch004-max/app-lit-G2 (rama `taller-integracion`)
 - **Equipo externo:** Equipo 3
 - **Repositorio externo:** https://github.com/Shairr/Componentes-Lit-G3
@@ -66,17 +66,20 @@ _Notas de 0 a 5 basadas en la lectura de `register.js` del equipo 3 (commit `7ed
 
 ## 6. Uso de IA
 
-- **Herramienta:** Claude Code
-- **Quién la usó:** _(integrante)_
-- **Para qué:** estructura inicial de `integracion.js`, `integracion.html` y borrador de esta documentación.
-- **Qué cambiamos nosotros:** _(completar)_
+Usamos IA como apoyo en tareas puntuales: aclarar dudas y entender errores. Las decisiones técnicas, el issue los hicimos y verificamos nosotros en el repositorio.
+
+| Herramienta | Quién la usó | Para qué | Qué cambiamos |
+| --- | --- | --- | --- |
+| Claude | Cristian Mañay | Dudas puntuales de Git |  
+| Claude | Jeremy Vilaña | Escribir el padre `<wc-integracion>` | Revisó lo sugerido y lo ajustó a los nombres y campos reales del proyecto |
+| Claude | Amaro Caiza | Dudas puntuales sobre cómo hacer el issue | Redactó el issue con lo que observó en el código del componente externo |
 
 ## 7. Aportes del equipo
 
 | Integrante | Rol | Commits |
 | --- | --- | --- |
 | Cristian Mañay | Rol 1 · Integración | [commits](https://github.com/crismch004-max/app-lit-G2/commits/taller-integracion?author=crismch004-max) |
-| Jeremy Vilañana | Rol 2 · Adaptador y pruebas | [commits](https://github.com/crismch004-max/app-lit-G2/commits/taller-integracion?author=JeremyAVG) |
+| Jeremy Vilaña | Rol 2 · Adaptador y pruebas | [commits](https://github.com/crismch004-max/app-lit-G2/commits/taller-integracion?author=JeremyAVG) |
 | Amaro Caiza | Roles 3 y 4 · Revisión externa y Documentación | [commits](https://github.com/crismch004-max/app-lit-G2/commits/taller-integracion?author=abcaiza1) |
 
 ### Lista de verificación antes de entregar
