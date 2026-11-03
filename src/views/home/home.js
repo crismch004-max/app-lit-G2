@@ -5,12 +5,7 @@ import './register.js';
 class Home extends LitElement {
     constructor() {
         super();
-        this.studentList = [
-            { name: "Paulo", lastName: "Galarza", age: 30 },
-            { name: "Julian", lastName: "Galarza", age: 2 },
-            { name: "Karol", lastName: "Gilces", age: 27 },
-            { name: "Karol", lastName: "Gilces", age: 27 }
-        ];
+        this.studentList = [];
     }
     render() {
         return html`

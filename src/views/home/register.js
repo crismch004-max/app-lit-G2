@@ -8,6 +8,77 @@ class Register extends LitElement {
         };
     }
 
+    static get styles() {
+        return css`
+            :host {
+                display: block;
+                margin-bottom: 24px;
+                color-scheme: light;
+                font-family: system-ui, sans-serif;
+            }
+            form {
+                background: #ffffff;
+                border: 1px solid #cfd8e3;
+                border-radius: 12px;
+                padding: 24px;
+                max-width: 520px;
+                margin: auto;
+                box-shadow: 0 4px 16px -2px rgba(20, 40, 70, 0.08);
+            }
+            fieldset {
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
+            legend {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #1f3a5f;
+                margin-bottom: 20px;
+            }
+            div {
+                display: grid;
+                grid-template-columns: 110px 1fr;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+            label {
+                font-weight: 600;
+                color: #1f2937;
+            }
+            input {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px 14px;
+                border: 1px solid #cfd8e3;
+                border-radius: 8px;
+                background: #ffffff;
+                color: #1f2937;
+                font-size: 0.95rem;
+                outline: none;
+            }
+            input:focus {
+                border-color: #2f6fed;
+                box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.2);
+            }
+            button {
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-radius: 8px;
+                background: #1f3a5f;
+                color: #ffffff;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+            }
+            button:hover {
+                background: #2f6fed;
+            }
+        `;
+    }
+
     constructor() {
         super();
         this.name = this.lastName = this.age = "";
@@ -80,3 +151,4 @@ class Register extends LitElement {
     `;
     }
 }
+window.customElements.define('wc-form-register', Register);
