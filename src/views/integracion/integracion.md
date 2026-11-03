@@ -48,20 +48,21 @@ Probado en `http://localhost:5173/integracion.html` con `npm run dev`; captura e
 
 | # | Síntoma | Causa | Solución |
 | --- | --- | --- | --- |
-| 1 | _(completar con lo real, p. ej. la tabla no se actualiza al registrar)_ | _(p. ej. se hacía `push` sobre el mismo arreglo)_ | _(p. ej. arreglo nuevo con spread)_ |
-| 2 | _(completar, p. ej. `customElements.define` lanza error por etiqueta duplicada)_ | _(p. ej. se cargó `home.js` o `src/index.js`)_ | _(importar solo `register.js` y `table.js`)_ |
+| 1 | El formulario del equipo 3 emite cinco datos (`nombre`, `origen`, `precio`, `cantidad`, `total`) y nuestra tabla solo tiene tres columnas; además su etiqueta es `<wc-register>` y su evento `cafeRegister`, no los del ejemplo del taller. | Los dos componentes se escribieron por separado, con otra temática y otros nombres. | Se leyó su `register.js` y se adaptó en el padre `<wc-integracion>`: se escucha `@cafeRegister` y `agregar()` convierte `nombre`, `origen` y `total` en `servicio`, `categoria` y `precio`. Su archivo no se modificó. |
+| 2 | En nuestra tabla de servicios tecnológicos, la columna Categoría muestra datos de café (por ejemplo "ecuador"). | El campo "Región de origen" del formulario externo alimenta la columna Categoría; los datos de un café no encajan con una tabla de servicios. | Se aceptó como parte de la adaptación del taller; con datos acordes (por ejemplo "Redes") la tabla se ve coherente. |
+| 3 | En la página de clase (`localhost:5173`) nuestro formulario no aparecía; solo se veía la tabla. | Nuestro `register.js` no llamaba a `customElements.define`, así que `<wc-form-register>` nunca se registraba. | Se agregó `window.customElements.define("wc-form-register", Register)` al final de nuestro `register.js`. |
 
 ## 5. Evaluación del componente externo
 
 | Aspecto | Qué se comprueba | Nota (0-5) | Evidencia |
 | --- | --- | --- | --- |
-| API clara | Se sabe qué propiedad recibe y qué evento emite sin adivinar; los nombres dicen lo que hacen. | _ | _ |
-| Evento bien construido | Envía los datos en `detail` y usa `bubbles` y `composed` cuando hace falta. | _ | _ |
-| Robustez | No falla si la propiedad llega vacía o sin definir, ni con datos inesperados. | _ | _ |
-| Encapsulamiento | Sus estilos no rompen la página y los nuestros no lo rompen a él. | _ | _ |
-| Reutilización | Se usó sin tocar su código y sin depender de otros archivos de su proyecto. | _ | _ |
+| API clara | Se sabe qué propiedad recibe y qué evento emite sin adivinar; los nombres dicen lo que hacen. | 3 | Las propiedades están declaradas (`register.js:4-12`) y los nombres son claros, pero `total` figura como propiedad aunque se calcula sola (`register.js:179-190`), la etiqueta `wc-register` es muy genérica (`register.js:258`) y no hay documentación del evento. |
+| Evento bien construido | Envía los datos en `detail` y usa `bubbles` y `composed` cuando hace falta. | 4 | `register.js:193-209` emite `cafeRegister` con los datos en `detail`, `bubbles: true` y `composed: true`; el padre lo recibió sin problema. Detalle: el nombre en camelCase se aparta de la convención con guiones. |
+| Robustez | No falla si la propiedad llega vacía o sin definir, ni con datos inesperados. | 3 | El total vale `"0.00"` si falta precio o cantidad (`register.js:179-190`) y los campos son `required`. Pero tras emitir el evento no se limpian los campos (`register.js:193-209`; visto en `Taller_Equipo_2.png`). |
+| Encapsulamiento | Sus estilos no rompen la página y los nuestros no lo rompen a él. | 4 | Usa Shadow DOM con `static get styles` (`register.js:15`) y variables CSS con valores por defecto. En la integración sus estilos y los de nuestra tabla no se afectaron. Tiene reglas sin uso (`.input-dinero`, `.simbolo-moneda`, `register.js:82-100`). |
+| Reutilización | Se usó sin tocar su código y sin depender de otros archivos de su proyecto. | 4 | Se copió `register.js` sin cambios (commit `7ed9e9e`), solo importa `lit-element` y se registra a sí mismo (`register.js:258`). Está atado a la temática de café. |
 
-_Las notas y la evidencia (archivo:línea o captura) se llenan al probar el componente real del otro equipo._
+_Notas de 0 a 5 basadas en la lectura de `register.js` del equipo 3 (commit `7ed9e9e`) y en las pruebas de `integracion.html`._
 
 ## 6. Uso de IA
 
