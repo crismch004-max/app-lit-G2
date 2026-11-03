@@ -17,11 +17,15 @@ class Integracion extends LitElement {
   // Adaptador: convierte el detail del otro equipo al formato de nuestra tabla
   agregar(event) {
     const detail = event.detail || {};
-    const fila = {
-      name: detail.name,
-      lastName: detail.lastName,
-      age: Number(detail.age),
-    };
+    const name = String(detail.name ?? "").trim();
+    const lastName = String(detail.lastName ?? "").trim();
+    const age = Number(detail.age);
+    // Datos inesperados: no se agrega una fila rota a la tabla
+    if (!name || !lastName || detail.age === "" || Number.isNaN(age)) {
+      console.warn("[wc-integracion] detail incompleto, se ignora:", detail);
+      return;
+    }
+    const fila = { name, lastName, age };
     // Arreglo nuevo: así Lit detecta el cambio y vuelve a renderizar
     this.lista = [...this.lista, fila];
   }
