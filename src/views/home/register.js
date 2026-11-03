@@ -1,82 +1,171 @@
 import { LitElement, html, css } from "lit-element";
+
 class Register extends LitElement {
     static get properties() {
         return {
-            name: { type: String },
-            lastName: { type: String },
-            age: { type: Number },
+            servicio: { type: String },
+            categoria: { type: String },
+            precio: { type: Number },
         };
+    }
+
+    static get styles() {
+        return css`
+            :host {
+                display: block;
+                margin-bottom: 24px;
+                color-scheme: light;
+                font-family: system-ui, sans-serif;
+            }
+            form {
+                background: #ffffff;
+                border: 1px solid #cfd8e3;
+                border-radius: 12px;
+                padding: 24px;
+                max-width: 520px;
+                margin: auto;
+                box-shadow: 0 4px 16px -2px rgba(20, 40, 70, 0.08);
+            }
+            fieldset {
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
+            legend {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #1f3a5f;
+                margin-bottom: 20px;
+            }
+            div {
+                display: grid;
+                grid-template-columns: 110px 1fr;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+            label {
+                font-weight: 600;
+                color: #1f2937;
+            }
+            input,
+            select {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px 14px;
+                border: 1px solid #cfd8e3;
+                border-radius: 8px;
+                background: #ffffff;
+                color: #1f2937;
+                font-size: 0.95rem;
+                outline: none;
+            }
+            input:focus,
+            select:focus {
+                border-color: #2f6fed;
+                box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.2);
+            }
+            button {
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-radius: 8px;
+                background: #1f3a5f;
+                color: #ffffff;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+            }
+            button:hover {
+                background: #2f6fed;
+            }
+        `;
     }
 
     constructor() {
         super();
-        this.name = this.lastName = this.age = "";
-
+        this.servicio = this.categoria = this.precio = "";
     }
 
     handler(name) {
         return (event) => {
-            let value = event.target.value;
-            this[name] = value;
-
-        }
+            this[name] = event.target.value;
+        };
     }
 
-    register(){
+    register(event) {
+        event.preventDefault();
         let data = {
-            name: this.name,
-            lastName: this.lastName,
-            age: this.age
-        }
-        console.log(data);
+            servicio: this.servicio,
+            categoria: this.categoria,
+            precio: Number(this.precio),
+        };
+        this.dispatchEvent(
+            new CustomEvent("serviceRegister", {
+                detail: data,
+                bubbles: true,
+                composed: true,
+            })
+        );
+        this.servicio = this.categoria = this.precio = "";
     }
 
     render() {
         return html`
-      <form action="#" method="post">
+      <form @submit="${this.register}">
         <fieldset>
-          <legend>Registro de usuario</legend>
- 
+          <legend>Registro de servicio tecnológico</legend>
+
           <div>
-            <label for="nombre">Nombre:</label>
+            <label for="servicio">Servicio:</label>
             <input
-            @input="${this.handler('name')}"
-              .value="${this.name}"
+              @input="${this.handler("servicio")}"
+              .value="${this.servicio}"
               type="text"
-              id="nombre"
-              name="nombre"
+              id="servicio"
+              name="servicio"
+              placeholder="Ej: Soporte técnico remoto"
               required
             />
           </div>
- 
+
           <div>
-            <label for="apellido">Apellido:</label>
-            <input
-            @input="${this.handler('lastName')}"
-              .value="${this.lastName}"
-              type="text"
-              id="apellido"
-              name="apellido"
+            <label for="categoria">Categoría:</label>
+            <select
+              @change="${this.handler("categoria")}"
+              .value="${this.categoria}"
+              id="categoria"
+              name="categoria"
               required
-            />
+            >
+              <option value="" disabled>Seleccione...</option>
+              <option>Soporte técnico</option>
+              <option>Desarrollo web</option>
+              <option>Redes</option>
+              <option>Seguridad</option>
+              <option>Nube</option>
+            </select>
           </div>
- 
+
           <div>
-            <label for="edad">Edad:</label>
+            <label for="precio">Precio (USD):</label>
             <input
-            @input="${this.handler('age')}"
-              .value="${this.age}"
+              @input="${this.handler("precio")}"
+              .value="${this.precio}"
               type="number"
-              id="edad"
-              name="edad"
+              id="precio"
+              name="precio"
               min="0"
+              step="0.01"
               required
             />
           </div>
- 
-          <button type="submit">Registrar</button>
+
+          <button type="submit">Registrar servicio</button>
         </fieldset>
       </form>
     `;
     }
 }
+
+window.customElements.define("wc-form-register", Register);
