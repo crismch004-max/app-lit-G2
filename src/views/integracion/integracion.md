@@ -2,7 +2,8 @@
 
 ## 1. Datos
 
-- **Equipo:** Equipo N° _(completar)_ — integrantes: _(4 nombres)_
+- **Equipo:** Equipo N° _(completar)_ — integrantes: Cristian Mañay, Jeremy Vilañana, Amaro Caiza
+- **Repositorio del equipo:** https://github.com/crismch004-max/app-lit-G2 (rama `taller-integracion`)
 - **Equipo externo:** Equipo 3 _(confirmar)_
 - **Repositorio externo:** _(enlace)_
 - **Archivo externo:** `src/externos/equipo-3/register.js` (`<wc-form-register>`)
@@ -58,7 +59,6 @@ componente externo no se modifica.
 
 | Integrante | Rol | Commits |
 | --- | --- | --- |
-| _(nombre 1)_ | Rol 1 · Integración | _(enlace)_ |
-| _(nombre 2)_ | Rol 2 · Adaptador y pruebas | _(enlace)_ |
-| _(nombre 3)_ | Rol 3 · Revisión externa | _(enlace)_ |
-| _(nombre 4)_ | Rol 4 · Documentación | _(enlace)_ |
+| Cristian Mañay | Rol 1 · Integración | [commits](https://github.com/crismch004-max/app-lit-G2/commits/taller-integracion?author=crismch004-max) |
+| Jeremy Vilañana | Rol 2 · Adaptador y pruebas | [commits](https://github.com/crismch004-max/app-lit-G2/commits/taller-integracion?author=JeremyAVG) |
+| Amaro Caiza | Roles 3 y 4 · Revisión externa y Documentación | _(enlace)_ |
