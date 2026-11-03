@@ -2,7 +2,7 @@
 
 ## 1. Datos
 
-- **Equipo:** Equipo N° _(completar)_ — integrantes: Cristian Mañay, Jeremy Vilañana, Amaro Caiza
+- **Equipo:** Equipo N° 2 — integrantes: Cristian Mañay, Jeremy Vilañana, Amaro Caiza
 - **Repositorio del equipo:** https://github.com/crismch004-max/app-lit-G2 (rama `taller-integracion`)
 - **Equipo externo:** Equipo 3
 - **Repositorio externo:** https://github.com/Shairr/Componentes-Lit-G3
@@ -33,6 +33,16 @@ tecnológicos (`{ servicio, categoria, precio }`, tres campos): `nombre` pasa a
 Si falta algún dato, el evento se ignora con un aviso en consola. Luego hace
 `this.lista = [...this.lista, fila]`; al ser un arreglo nuevo, Lit re-renderiza
 y la tabla muestra la fila. El componente externo no se modifica.
+
+### Pruebas realizadas (rol 2)
+
+Probado en `http://localhost:5173/integracion.html` con `npm run dev`; captura en `Taller_Equipo_2.png`.
+
+| Prueba | Resultado |
+| --- | --- |
+| Lista vacía al cargar | La tabla muestra solo los encabezados; la consola no tiene errores (solo el aviso de Lit en modo desarrollo). |
+| Registro normal: nombre "cristian", región "ecuador", precio 3,00, cantidad 3 | El formulario muestra total $9.00 y la tabla agrega la fila `cristian · ecuador · $9.00`. |
+| Formulario tras enviar | Los campos del formulario del equipo 3 no se limpian después de emitir el evento. |
 
 ## 4. Dificultades
 
